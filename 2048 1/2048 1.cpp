@@ -1,7 +1,6 @@
-﻿#include <iostream>
-#include <ctime>
-#include <cstdlib>
-#include <iomanip>
+﻿#include <iomanip>
+#include <iostream>
+
 
 using namespace std; 
 
@@ -22,7 +21,7 @@ pair<int, int> generateUnoccupiedPosition() {
 
 void addPiece() {
 	pair<int, int> pos = generateUnoccupiedPosition();
-	board[pos.first][pos.second] = 2;
+	board[pos.first][pos.second] = 2; //создание 2 
 }
 
 void newGame() {
@@ -45,9 +44,9 @@ void printUI() {
 	cout << "n:new game, w: up, s: down, d: right, a: left, q: quit\n";
 }
 
-bool canDoMove(int line, int column, int nextLine, int nextColumn) {
+bool canDoMove(int line, int column, int nextLine, int nextColumn) { 
 	if (nextLine < 0 || nextColumn < 0 || nextLine >= 4 || nextColumn >= 4
-		|| (board[line][column] != board[nextLine][nextColumn] && board[nextLine][nextColumn] != 0))
+		|| (board[line][column] != board[nextLine][nextColumn] && board[nextLine][nextColumn] != 0))// не выходить за рамки 
 		return false;
 	return true;
 }
@@ -81,8 +80,8 @@ void applyMove(int direction) {
 }
 
 int main()
+
 {
-	srand(time(0));
 	char commandToDir[128];
 	commandToDir['s'] = 0;
 	commandToDir['d'] = 1;
