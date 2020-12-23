@@ -18,6 +18,11 @@ pair<int, int> generateUnoccupiedPosition() {
 	}
 	return make_pair(line, column);
 }
+void addPiece4() {
+	pair<int, int> pos = generateUnoccupiedPosition();
+	board[pos.first][pos.second] = 16; //создание 2 
+}
+
 
 void addPiece() {
 	pair<int, int> pos = generateUnoccupiedPosition();
@@ -29,6 +34,7 @@ void newGame() {
 		for (int j = 0; j < 4; ++j)
 			board[i][j] = 0;
 	addPiece();
+		addPiece4();
 }
 
 void printUI() {
@@ -46,7 +52,7 @@ void printUI() {
 
 bool canDoMove(int line, int column, int nextLine, int nextColumn) { 
 	if (nextLine < 0 || nextColumn < 0 || nextLine >= 4 || nextColumn >= 4
-		|| (board[line][column] != board[nextLine][nextColumn] && board[nextLine][nextColumn] != 0))// не выходить за рамки 
+		|| (board[line][column] != board[nextLine][nextColumn] && board[nextLine][nextColumn] != 0))
 		return false;
 	return true;
 }
