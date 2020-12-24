@@ -1,9 +1,7 @@
 ﻿#include <iomanip>
 #include <iostream>
 
-
 using namespace std; 
-
 int board[4][4];
 int dirLine[] = { 1, 0, -1, 0 };
 int dirColumn[] = { 0, 1, 0, -1 };
@@ -18,15 +16,49 @@ pair<int, int> generateUnoccupiedPosition() {
 	}
 	return make_pair(line, column);
 }
-void addPiece4() {
-	pair<int, int> pos = generateUnoccupiedPosition();
-	board[pos.first][pos.second] = 16; //создание 2 
-}
-
 
 void addPiece() {
 	pair<int, int> pos = generateUnoccupiedPosition();
 	board[pos.first][pos.second] = 2; //создание 2 
+}
+void addPiece2() {
+	pair<int, int> pos = generateUnoccupiedPosition();
+	board[pos.first][pos.second] = 20; //создание 2 
+}
+void addPiece3() {
+	pair<int, int> pos = generateUnoccupiedPosition();
+	board[pos.first][pos.second] = 1024; //создание 2 
+}
+void addPiece4() {
+	pair<int, int> pos = generateUnoccupiedPosition();
+	board[pos.first][pos.second] = 1024; //создание 2 
+}
+void addPiece5() {
+	pair<int, int> pos = generateUnoccupiedPosition();
+	board[pos.first][pos.second] = 28; //создание 2 
+}
+
+bool check() {
+	int count = 0;
+	bool gameOver = false;
+	for (int i = 0; i < 4; ++i) {
+		for (int j = 0; j < 4; ++j) {
+			if (board[i][j] == 0) {
+				++count;
+			}
+			if (i != 3 and board[i][j] == board[i + 1][j]) {
+				++count;
+			}
+			if (j != board[i][j] == board[i][j + 1]) {
+				++count;
+			}
+		}
+	}
+	if (count == 0){ 
+		gameOver = true;
+		cout << "Game Over";
+	}
+	return gameOver;
 }
 
 void newGame() {
@@ -34,7 +66,15 @@ void newGame() {
 		for (int j = 0; j < 4; ++j)
 			board[i][j] = 0;
 	addPiece();
-		addPiece4();
+	addPiece5();
+	addPiece3();
+	addPiece4();
+	addPiece2();
+	addPiece3();
+	addPiece4();
+	addPiece5();
+	addPiece3();
+
 }
 
 void printUI() {
@@ -86,7 +126,6 @@ void applyMove(int direction) {
 }
 
 int main()
-
 {
 	char commandToDir[128];
 	commandToDir['s'] = 0;
@@ -104,8 +143,10 @@ int main()
 			break;
 		else {
 			int currentDirection = commandToDir[command];
+
 			applyMove(currentDirection);
 		}
+		check();
 	}
 	return 0;
 }
