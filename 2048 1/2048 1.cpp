@@ -35,7 +35,7 @@ bool check() {
 				++count;
 			}
 
-			if (j != board[i][j] == board[i][j + 1]) {
+			if (j != 3 and board[i][j] == board[i][j + 1]) {
 				++count;
 			}
 			if (board[i][j] == 2048) {
