@@ -52,6 +52,12 @@ bool check() {
 			if (j != board[i][j] == board[i][j + 1]) {
 				++count;
 			}
+			if (board[i][j] == 2048) {
+				cout << "You achieved 2048!" << endl;
+			}
+			if (board[i][j] == 2048) {
+				cout << "You achieved 2048!" << endl;
+			}
 		}
 	}
 	if (count == 0){ 
